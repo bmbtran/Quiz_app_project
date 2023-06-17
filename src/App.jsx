@@ -1,16 +1,20 @@
 import { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Views/Homepage/Homepage.jsx'
+import QuizDetailsView from './Views/QuizDetailsView/QuizDetailsView.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <Homepage />
-      </div>
-    </>
+    // <BrowserRouter>
+    //   <Routes />
+    <div className='font-ubuntu'>
+      {/* <Homepage/> */}
+      <QuizDetailsView />
+
+    </div>
+    // </BrowserRouter>
   )
 }
 
