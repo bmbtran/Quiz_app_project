@@ -5,6 +5,7 @@ import time from "../../assets/time.png"
 import star from "../../assets/star.svg"
 import QuizInfo from "../../Components/QuizInfo.jsx"
 import BulletQuizDetails from '../../Components/BulletQuizDetails'
+import Indicator from '../../Components/Indicator'
 
 const Instruction = () => {
   function StartQuiz(){
@@ -12,9 +13,7 @@ const Instruction = () => {
   }
   return (
     <div className=" h-3/4 w-screen bg-white rounded-t-3xl">
-    <div className='flex justify-center items-start '>
-        <img className="flex justify-center pt-4" src={indicator} />       
-    </div>
+    <Indicator />
     <div className= "flex flex-col space-y-4 mt-3 text-black px-10 font-nunito ">
         <h1 className=" font-extrabold text-left font-ubuntu text-lg">Brief explanation about this quiz</h1>
         <div className=' space-y-4'>

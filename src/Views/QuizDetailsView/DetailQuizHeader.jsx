@@ -23,7 +23,7 @@ const DetailQuizHeader = () => {
       <div className='flex justify-between space-x-3 items-end pb-2'>
         <img className='w-5 h-5' src={starRating} alt="Rating stars"/>
         <p className='text-white'>{rating}</p>
-    </div>
+      </div>
     </div>
 </div>
 //replace with data fetched from API later

@@ -9,9 +9,9 @@ function App() {
   return (
     // <BrowserRouter>
     //   <Routes />
-    <div className='font-ubuntu'>
-      {/* <Homepage/> */}
-      <QuizDetailsView />
+    <div >
+      <Homepage/>
+      {/* <QuizDetailsView /> */}
 
     </div>
     // </BrowserRouter>
