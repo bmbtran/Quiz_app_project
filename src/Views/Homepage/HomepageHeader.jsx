@@ -4,6 +4,7 @@ import menu_bar from '../../assets/menu_bar.png'
 import SearchBar from '../../Components/SearchBar.jsx'
 
 const HomepageHeader = () => {
+  
     const [avatar, username] = [kirby, "Tran"]
   return (
     <div className='h-1/4'>
@@ -13,7 +14,7 @@ const HomepageHeader = () => {
           </div>
           <img className="w-10 h-11 rounded-full mr-10 " src={avatar} alt="Rounded avatar"/>
         </div>
-        <div className='flex flex-col px-10 flex-wrap  pt-3 space-y-2'>
+        <div className='flex flex-col px-10 flex-wrap pt-2  space-y-2'>
           <div className='text-white'>
             <h3 className='text-sm'>{`Hello, ${username}`}</h3>
             <h2 className='text-lg font-bold font-ubuntu'>Let's test your knowledge</h2>
