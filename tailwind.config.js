@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        'screen-1/9': '10%',
+        'screen-9/10': '89.5%',
+      },
       colors: {
         blue: colors.trueBlue,
         blue: {
