@@ -1,14 +1,18 @@
-
-
+import Card from "./Card.jsx"
 import React, { useState } from 'react';
+import TabContent from "./TabContent.jsx";
 
-const Tab = () => {
+const Tab = (props) => {
   const [activeTab, setActiveTab] = useState('popular');
-
+  const data = props.course
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
-
+  const filteredData = data.filter((course) =>{
+   return course.category.toLowerCase() === activeTab.toLowerCase()
+  } );
+ 
+  console.log(filteredData)
   return (
     <>
       <div className="mb-4 border-b border-white dark:border-gray-700">
@@ -81,78 +85,10 @@ const Tab = () => {
       </div>
 
       <div id="myTabContent">
-        <div
-          className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${
-            activeTab === 'popular' ? '' : 'hidden'
-          }`}
-          id="popular"
-          role="tabpanel"
-          aria-labelledby="popular-tab"
-        >
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            This is some placeholder content the{' '}
-            <strong className="font-medium text-gray-800 dark:text-white">
-              popular tab's associated content
-            </strong>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps className to control the content
-            visibility and styling.
-          </p>
-        </div>
-        <div
-          className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${
-            activeTab === 'science' ? '' : 'hidden'
-          }`}
-          id="science"
-          role="tabpanel"
-          aria-labelledby="science-tab"
-        >
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            This is some placeholder content the{' '}
-            <strong className="font-medium text-gray-800 dark:text-white">
-              science tab's associated content
-            </strong>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps className to control the content
-            visibility and styling.
-          </p>
-        </div>
-        <div
-          className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${
-            activeTab === 'mathematics' ? '' : 'hidden'
-         }`}
-          id="mathematics"
-          role="tabpanel"
-          aria-labelledby="mathematics-tab"
-        >
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            This is some placeholder content the{' '}
-            <strong className="font-medium text-gray-800 dark:text-white">
-              mathematics tab's associated content
-            </strong>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps className to control the content
-            visibility and styling.
-          </p>
-        </div>
-        <div
-          className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${
-            activeTab === 'computer' ? '' : 'hidden'
-          }`}
-          id="computer"
-          role="tabpanel"
-          aria-labelledby="computer-tab"
-        >
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            This is some placeholder content the{' '}
-            <strong className="font-medium text-gray-800 dark:text-white">
-              Computer tab's associated content
-            </strong>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps className to control the content
-            visibility and styling.
-          </p>
-        </div>
+        <TabContent category="popular" activeTab={activeTab} filteredData={filteredData}/>
+        <TabContent category="science" activeTab={activeTab} filteredData={filteredData}/>
+        <TabContent category="mathematics" activeTab={activeTab} filteredData={filteredData}/>
+        <TabContent category="computer" activeTab={activeTab} filteredData={filteredData}/>
       </div>
     </>
   );

@@ -104,7 +104,7 @@ const CoursePanel = () => {
             ))}
           </div>
         ) : (
-          <Tab/>
+          <Tab course={data} />
         )}
       </div>
       </div>
