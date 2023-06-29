@@ -1,0 +1,81 @@
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import QuizViewHeader from '../src/Views/QuizView/QuizViewHeader.jsx';
+
+const mockStore = configureStore([]);
+
+describe('QuizViewHeader', () => {
+  let store;
+
+  beforeEach(() => {
+    store = mockStore({
+      selectedCourse: {
+        id: 1,
+        name: 'Test Course',
+        duration: 1,
+      },
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  it('renders the component with the correct course name', () => {
+    render(
+      <Provider store={store}>
+        <QuizViewHeader />
+      </Provider>
+    );
+
+    expect(screen.getByText('Test Course')).toBeInTheDocument();
+  });
+
+  it('displays the remaining time in the correct format', () => {
+    jest.useFakeTimers();
+    render(
+      <Provider store={store}>
+        <QuizViewHeader />
+      </Provider>
+    );
+
+    expect(screen.getByText(/^\d{2}:\d{2}$/)).toBeInTheDocument();
+  });
+
+  it('displays the correct remaining time', async () => {
+    jest.useFakeTimers();
+    render(
+      <Provider store={store}>
+        <QuizViewHeader />
+      </Provider>
+    );
+
+    // Advance the timer by 1 minute and 30 seconds
+    jest.advanceTimersByTime(90000);
+
+    // Wait for the component to update
+    await waitFor(() => {
+      expect(screen.getByText('00:29')).toBeInTheDocument();
+    });
+  });
+
+  it('displays "00:00" when time is up', async () => {
+    jest.useFakeTimers();
+    render(
+      <Provider store={store}>
+        <QuizViewHeader />
+      </Provider>
+    );
+
+    // Advance the timer by 1 hour
+    jest.advanceTimersByTime(3600000);
+
+    // Wait for the component to update
+    await waitFor(() => {
+      expect(screen.getByText('00:00')).toBeInTheDocument();
+    });
+  });
+});

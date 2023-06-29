@@ -11,8 +11,6 @@ function App() {
     <div >
         <Router>
           <Routes>
-            {/* <Homepage/> */}
-            {/* <QuizDetailsView /> */}
             <Route path="/" exact element={<Homepage/>} />
             <Route path="/course/:id" element={<QuizDetailsView/>} />
             <Route path="/course/:id/quiz" element={<Quiz/>} />

@@ -1,21 +1,4 @@
-// import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-// import axios from 'axios';
 
-// const initialState = {
-//     courses: [],
-// }
-// const courseSlice = createSlice({
-//     name: 'courses',
-//     initialState,
-//     reducers: {
-//         addCourses: (state, {payload}) => {
-//             state.courses = payload
-//         }
-//     }
-// })
-// export const {addCourses} = courseSlice.actions; 
-// export const getAllCourses
-// export default courseSlice.reducer
 import { createSlice } from '@reduxjs/toolkit';
 
 const courseSlice = createSlice({

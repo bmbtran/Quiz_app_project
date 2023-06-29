@@ -15,7 +15,7 @@ const Card = ({course}) => {
 
   return (
     //create a horizontal card with an image, title, and rating that is still horizontal on small screen
-    <Link to={{ pathname: `/course/${course.id}`}}>
+    <Link to={{ pathname: `/course/:${course.id}`}}>
     <div className="flex items-center space-x-4 shadow-lg mx-4 rounded-md border-2 hover:border-sky-500" onClick={handleCardClick}>
       <img className="h-20 w-20 rounded ml-3 my-2" src={course.image} alt={course.name} />
       <div>
