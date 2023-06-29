@@ -7,12 +7,12 @@ import question from "../assets/questions_homepage.png"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const Card = ({course}) => {
+const Card = (props) => {
   const dispatch = useDispatch();
   const handleCardClick = () => {
     dispatch(selectCourse(course));
   };
-
+  const course = props.course
   return (
     //create a horizontal card with an image, title, and rating that is still horizontal on small screen
     <Link to={{ pathname: `/course/${course.id}`}}>

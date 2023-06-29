@@ -9,7 +9,7 @@ import { fetchCourseData } from '../../../courseApi.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from "../../../Components/SearchBar.jsx"
 import { Link } from 'react-router-dom';
-
+import ContinueQuiz from "./ContinueQuiz.jsx"
 
 
 
