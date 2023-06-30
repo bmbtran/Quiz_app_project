@@ -44,12 +44,14 @@ import trashIcon from "../assets/trash.png"
 //   )}
 // export default ContinueCard
 
-const ContinueCard = ({course}) => {
+const ContinueCard = (props) => {
+  const course =props.course
+  const questionsDone = props.questionsDone
   const dispatch = useDispatch();
   const handleContinueCardClick = () => {
     dispatch(selectCourse(course));
   };
-  const [questionsDone, timeLeft] = [2, 0.3]
+  const  timeLeft = 0.3
 
   return (
     //create a horizontal ContinueCard with an image, title, and rating that is still horizontal on small screen

@@ -5,7 +5,9 @@ import gray_arrow from "../../assets/gray_arrow.svg"
 import blue_arrow from "../../assets/blue_arrow.png"
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addFinishedCourse } from '../../features/finishedCoursesSlice.js';
 
 
 function QuizContent() {
@@ -13,18 +15,41 @@ function QuizContent() {
   if (selectedCourse === null) {
     return <div>Loading...</div>;
   }
+  const dispatch = useDispatch();
+  const finishedCourses = useSelector((state) => state.finishedCourses);
+
+
 
   const [activeTab, setActiveTab] = useState('1');
   const [selectedOption, setSelectedOption] = useState({});
   const [userAnswer, setUserAnswer] = useState({});
-
-  useEffect(() => {
-    console.log(userAnswer);
-  }, [userAnswer]);
+  const isQuizFinished = Object.keys(userAnswer).length == selectedCourse.quiz.length;
+  // useEffect(() => {
+  // //   console.log(userAnswer);
+  // // }, [userAnswer]);
+  // if (isQuizFinished) {
+  //     dispatch(addFinishedCourse(selectedCourse.id));
+  //   }
+  // }, [isQuizFinished, selectedCourse.id, dispatch]);
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+  // const handleSubmit = () => {
+  //   if (isQuizFinished && !finishedCourses.includes(selectedCourse.id))  {
+  //     dispatch(addFinishedCourse(selectedCourse.id));
+  //   }}
+  //   console.log("is quiz finished: "  + isQuizFinished)
+
+  useEffect(() => {
+    if (isQuizFinished && !finishedCourses.includes(selectedCourse.id)) {
+      dispatch(addFinishedCourse(selectedCourse.id));
+    } 
+  }, [isQuizFinished, selectedCourse.id, finishedCourses, dispatch]);
+
+
+    console.log("useranswer length" + Object.keys(userAnswer).length)
+    console.log("course quiz length" + selectedCourse.quiz.length)
 
   const handleArrowClick = (direction) => {
     const currentIndex = parseInt(activeTab) - 1;
@@ -54,8 +79,27 @@ function QuizContent() {
       [tabIndex +1]: selectedCourse.quiz[tabIndex].options[optionIndex],
     }));
     console.log(userAnswer)
+    console.log(Object.keys(userAnswer).length)
 
   };
+  const dataPassed = () => {
+    const openHomePage = (id) => {
+      const navigate = useNavigate();
+      navigate('/', {
+        id: "fromQuizContent",
+        questionsDone : Object.keys(userAnswer).length,
+      });
+    }
+    // function dataPassed() {
+    //   const navigate = useNavigate();
+      
+    //   const data = { questionsDone : userAnswer.length };
+      
+    //   navigate('/', {
+    //     state: data  
+    //   }); 
+    // }
+  }
 
   const isBubbleActive = (tabIndex, optionIndex) => {
     return selectedOption[tabIndex] === optionIndex;
@@ -133,8 +177,12 @@ function QuizContent() {
       </div>
       <div className="flex justify-center space-x-5 item-end pt-40">
             <img className="  " src={blue_arrow}    onClick={() => handleArrowClick("previous")}/>
-            <Link to="/">
-            <button className="  w-[195px] h-[50px] bg-white rounded-lg border-[1px] text-sky-600 font-ubuntu text-lg border-blue-500">Submit Quiz</button>
+            <Link to="/" state={{
+              id: "fromQuizContent",
+              questionsDone : Object.keys(userAnswer).length,
+            }}    
+          >
+            <button onClick={dataPassed} className="  w-[195px] h-[50px] bg-white rounded-lg border-[1px] text-sky-600 font-ubuntu text-lg border-blue-500">Submit Quiz</button>
             </Link>
             <img className=" "src={gray_arrow}    onClick={() => handleArrowClick("next")}/>
         </div>

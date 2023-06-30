@@ -2,7 +2,7 @@ import React from "react";
 import Homepage from './Views/Homepage/Homepage.jsx'
 import QuizDetailsView from './Views/QuizDetailsView/QuizDetailsView.jsx'
 import Quiz from './Views/QuizView/Quiz.jsx'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import NoPage from './Views/NoPage.jsx'
 
 function App() {
