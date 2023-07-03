@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addFinishedCourse } from '../../features/finishedCoursesSlice.js';
 
 
-function QuizContent() {
+function QuizContent({ duration }) {
   const selectedCourse = useSelector((state) => state.selectedCourse);
   if (selectedCourse === null) {
     return <div>Loading...</div>;
@@ -88,6 +88,7 @@ function QuizContent() {
       navigate('/', {
         id: "fromQuizContent",
         questionsDone : Object.keys(userAnswer).length,
+        timeLeft: duration
       });
     }
     // function dataPassed() {
@@ -180,6 +181,7 @@ function QuizContent() {
             <Link to="/" state={{
               id: "fromQuizContent",
               questionsDone : Object.keys(userAnswer).length,
+              timeLeft: duration,
             }}    
           >
             <button onClick={dataPassed} className="  w-[195px] h-[50px] bg-white rounded-lg border-[1px] text-sky-600 font-ubuntu text-lg border-blue-500">Submit Quiz</button>

@@ -6,7 +6,7 @@ import time_quiz_view from "../../assets/time_quiz_view.svg";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-function QuizViewHeader({ onTimeLeftChange }) {
+function QuizViewHeader({ onDurationChange }) {
   const selectedCourse = useSelector((state) => state.selectedCourse);
   const [duration, setDuration] = useState('--:--');
   const [remainingTime, setRemainingTime] = useState(0);
@@ -31,6 +31,8 @@ function QuizViewHeader({ onTimeLeftChange }) {
             remainingTimeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
           }
           setDuration(remainingTimeStr);
+          // onDurationChange(remainingTimeStr); // Call the callback function to update duration in the parent component
+          
         }
       }, 1000);
     }
@@ -42,6 +44,9 @@ function QuizViewHeader({ onTimeLeftChange }) {
   if (selectedCourse === null) {
     return <div>Loading...</div>; 
   }
+  useEffect(() => {
+    onDurationChange(duration);
+  }, [duration, onDurationChange]);
 
   return (
     <div className=''>
