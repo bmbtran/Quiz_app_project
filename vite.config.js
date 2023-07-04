@@ -11,9 +11,11 @@ export default defineConfig({
     test: {
       globals: true,
       environment: 'jsdom',
-      setupFiles: "./__tests__/setupTests.jsx",
-    }
-})
+      setupFiles: "./setupTests.jsx",
+      coverage: { reporter: ['text', 'lcov'] }, // lcov reporter is used by IDE coverage extensions
+      
+    },
+});
 
 
 

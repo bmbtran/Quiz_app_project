@@ -13,7 +13,7 @@ function TabContent(props) {
         >
           <div className="grid grid-cols-1 gap-4 ">
       
-            {props.filteredData.map((course) => (
+            { props.filteredData && props.filteredData.map((course) => (
               <Card  key={course.id} course={course} />
             ))}
           </div>

@@ -15,14 +15,19 @@ const Card = (props) => {
   const course = props.course
   return (
     //create a horizontal card with an image, title, and rating that is still horizontal on small screen
-    <Link to={{ pathname: `/course/${course.id}`} } onClick={handleCardClick}>
-    <div className="flex items-center space-x-4 shadow-lg mx-4 rounded-md border-2 hover:border-sky-500" >
+    <Link to={{ pathname: `/course/${course.id}`} } role="link"  onClick={handleCardClick}>
+    <div className="flex items-center space-x-4 shadow-lg mx-4 rounded-md border-2 hover:border-sky-500" role='article' >
       <img className="h-20 w-20 rounded ml-3 my-2" src={course.image} alt={course.name} />
       <div>
         <h3 className="text-lg font-bold font-ubuntu text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">{course.name}</h3>
               <div className='flex space-x-1'>
                 <img className='mt-1' src={question} />
-                <p className="text-gray-400">{course.quiz.length} Questions</p>
+                {props.course.quiz && (
+                  <div className='flex space-x-1'>
+                  <img className='mt-1' src={question} />
+                  <p className="text-gray-400">{props.course.quiz.length} Questions</p>
+                </div>
+                )}              
               </div>
               <div className='flex space-x-2'>
                 <img className='w-4 h-4 mt-1' src={time_pic} />

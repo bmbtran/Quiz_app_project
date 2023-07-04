@@ -8,7 +8,7 @@ const Tab = (props) => {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
-  const filteredData = data.filter((course) =>{
+  const filteredData =  data && data.filter((course) =>{
    return course.category.toLowerCase() === activeTab.toLowerCase()
   } );
  
