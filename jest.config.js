@@ -4,7 +4,7 @@
 //   };
 module.exports = {
     testEnvironment: 'jsdom',
-    setupFilesAfterEnv: ['./__tests__/setupTests.js'],
+    setupFilesAfterEnv: ['./setupTests.jsx'],
     transform: {
       '^.+\\.(js|jsx)$': 'babel-jest'
     }

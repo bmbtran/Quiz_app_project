@@ -90,7 +90,7 @@ const QuestionBar = () => {
             <h1 className="font-semibold text-lg">
               {selectedCourse.quiz[index].question}
             </h1>
-            {selectedCourse.quiz && selectedCourse.quiz[index].options.map((option, optionIndex) => (
+            {selectedCourse.quiz[index].options.map((option, optionIndex) => (
               <div
                 className="flex pt-4 space-x-3"
                 key={optionIndex}
