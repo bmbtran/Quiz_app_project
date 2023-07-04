@@ -20,15 +20,13 @@ const Card = (props) => {
       <img className="h-20 w-20 rounded ml-3 my-2" src={course.image} alt={course.name} />
       <div>
         <h3 className="text-lg font-bold font-ubuntu text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">{course.name}</h3>
-              <div className='flex space-x-1'>
-                <img className='mt-1' src={question} />
+              
                 {props.course.quiz && (
                   <div className='flex space-x-1'>
                   <img className='mt-1' src={question} />
                   <p className="text-gray-400">{props.course.quiz.length} Questions</p>
                 </div>
                 )}              
-              </div>
               <div className='flex space-x-2'>
                 <img className='w-4 h-4 mt-1' src={time_pic} />
                 <p className='text-gray-400'> {`${course.duration} ${course.duration > 1 ? "hours" : "hour"}`}</p>
