@@ -35,7 +35,6 @@ const DetailQuizHeader = () => {
       </div>
     </div>
 </div>
-//replace with data fetched from API later
   )
 }
 

@@ -9,21 +9,12 @@ import { useSelector } from 'react-redux'
 import trashIcon from "../assets/trash.png"
 
 
-const ContinueCard = (props) => {
-  const course =props.course
-  const questionsDone = props.questionsDone
-  const timeLeft = props.timeLeft
-  const onTrashClick = props.onTrashClick
-  const dispatch = useDispatch();
-  const handleContinueCardClick = () => {
-    dispatch(selectCourse(course));
-  };
-  // const  timeLeft = 0.3
+const ContinueCard = ({course, questionsDone, timeLeft, onTrashClick}) => {
 
   return (
     //create a horizontal ContinueCard with an image, title, and rating that is still horizontal on small screen
     <Link to={{ pathname: `/course/:${course.id}`}}>
-    <div className="border-transparent flex items-center space-x-4  mx-4 rounded-md border-2 hover:border-sky-500" onClick={handleContinueCardClick}>
+    <div className="border-transparent flex items-center space-x-4  mx-4 rounded-md border-2 hover:border-sky-500">
       <img className="h-20 w-20 rounded ml-3 my-2" src={course.image} alt={course.name} />
       <div className="flex-grow">
         <h3 className="text-lg font-bold font-ubuntu text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">{course.name}</h3>

@@ -60,7 +60,7 @@ function QuizViewHeader({ onDurationChange }) {
         <div className='relative pr-5'>
           <img src={quiz_view_rectangle} className=''/>
           <img src={time_quiz_view} className='absolute top-1/2 left-1/2 -translate-x-12 -translate-y-1/2'/>
-          <h1 className="absolute text-sm text-blue-500 top-1/2 left-1/2 -translate-x-7 -translate-y-1/2">
+          <h1 data-testid="remaining-time" className="absolute text-sm text-blue-500 top-1/2 left-1/2 -translate-x-7 -translate-y-1/2">
             {duration}
           </h1>
         </div>
